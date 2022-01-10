@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+## Folder Structure
+```
+assets/
+  logo.svg
+components/
+pages/
+hooks/
+redux/
+utils/
+index.js
+```
+- Assets: non public assets used by our app
+- Components: all react components with a folder for each feature and js file for each view
+- Hooks: for creating custom react hooks
+- Redux: for using the react context api (or Context - whatever we choose)
+- Utils: for any non react helper functions or modules
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## React Overview
+- With the addition of hooks React is now designed to be strictly functional and all components should be created as functions instead of classes
+- The primary hooks you will use are useState and useEffect [read docs here](https://reactjs.org/docs/hooks-intro.html)
+- State should be contained to a component structure unless it is absolutely necessary for it to be lifted. If it needs to be lifted then we can do that with the context API or our global state service.
+- Use default props when a component requires a default prop to render
+- Utilize MUI components as much as possible
 
-## Available Scripts
+## Formatting
+- In general, utilize es6 + syntax when writing javascript
+- Prefer const and let to var
+- Prefer arrow functions for components and functions declarations
+- Prefer ternaries for simple if else statements
+- Prefer inline arrow function for onChange events that simply need to call a function
+- Avoid inline styles and CSS in javascript
+- Use camelCase file naming for react files
+- React component names are Capitalized (ex: CamelCase)
+- Utilize array methods like .map, .filter, .forEach, .reduce for readability and simplicity
+- Utilize lodash for readability and simplicity
 
-In the project directory, you can run:
+```
+const ExamplePage = () => {
+  const [password, setPassword] = useState('')
 
-### `npm start`
+  const handleChange = () => {
+    localStorage.setItem('password', password)
+    setPassword('')
+  }
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  return (
+    localStorage.getItem('password') === process.env.REACT_APP_PASSWORD
+    ? <App />
+    : <Row justify='center' align='middle'>
+        <Col span={10}>
+          <Card title='Chocolate Chip Cookies'>
+            <Space size='middle' direction='vertical'>
+              <Input.Password placeholder="input password"
+                              onChange={e => {setPassword(e.target.value)}}
+                              iconRender={visible => (visible ? <CookieIcon /> : <EmptyBakingSheet />)}
+              />
+              <Button onClick={handleChange}>Submit</Button>
+            </Space>
+          </Card>
+        </Col>
+      </Row>
+  );
+}
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+export default ExamplePage
+```
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Original Create React App Readme Links
+- [Create React App Documentation](https://facebook.github.io/create-react-app/docs/getting-started)
+- [React Documentation](https://reactjs.org/)
+- [Code Splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [Analyzing the Bundle Size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [Progressive Web App](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [Advanced Configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [Deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- [Yarn Build Fails to Minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
