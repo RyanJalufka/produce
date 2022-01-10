@@ -1,14 +1,16 @@
 FROM node:alpine
 
-# RUN mkdir -p /usr/scr/node-app/
+RUN mkdir -p /usr/scr/api/
 
-# WORKDIR /usr/src/node-app
+WORKDIR /usr/src/api
 
 COPY . .
 
 # RUN yarn install --pure-lockfile
 RUN yarn
 
+RUN yarn global add nodemon
+
 EXPOSE 8000
 
-CMD [ "yarn", "start" ]
+CMD [ "nodemon", "start" ]

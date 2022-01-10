@@ -6,7 +6,8 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - ./client:/usr/src/client
+      - ./client:/app
+      - ./client:/node_modules
     networks:
       - node-network
 
@@ -20,7 +21,7 @@ services:
     depends_on:
       - mongodb
     volumes:
-      - ./api/src:/usr/src/node-app
+      - ./api/src:/usr/src/api/src
     networks:
       - node-network
 

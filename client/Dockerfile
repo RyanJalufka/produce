@@ -1,12 +1,11 @@
 FROM node:alpine
 
-RUN mkdir -p /usr/scr/client
+RUN mkdir -p /app
 
-WORKDIR /usr/src/client
+WORKDIR /app
 
-COPY . .
+COPY package.json package-lock.json /app/
 
-# RUN yarn install --pure-lockfile
 RUN npm install
 
 EXPOSE 3000

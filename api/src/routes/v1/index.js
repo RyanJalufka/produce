@@ -15,6 +15,10 @@ const defaultRoutes = [
     path: '/users',
     route: userRoute,
   },
+  {
+    path: '/docs',
+    route: docsRoute,
+  },
 ];
 
 const devRoutes = [
