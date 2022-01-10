@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  client:
+    build: ./client
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./client:/usr/src/client
+    networks:
+      - node-network
+
+  api:
+    build: ./api
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/node-boilerplate
+    ports:
+      - '8000:8000'
+    depends_on:
+      - mongodb
+    volumes:
+      - ./api/src:/usr/src/node-app
+    networks:
+      - node-network
+
+  mongodb:
+    image: mongo:4.2.1-bionic
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata:/data/db
+    networks:
+      - node-network
+
+volumes:
+  dbdata:
+
+networks:
+  node-network:
+    driver: bridge
