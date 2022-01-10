@@ -23,7 +23,7 @@ alias produce_build='COMPOSE_HTTP_TIMEOUT=300 docker-compose -f docker-compose.d
 alias produce_up='COMPOSE_HTTP_TIMEOUT=300 docker-compose -f docker-compose.dev.yml up'
 alias produce_down='COMPOSE_HTTP_TIMEOUT=300 docker-compose -f docker-compose.dev.yml down -v'
 ```
-### When Adding New NPM ###
+### When Adding New NPM Packages ###
 When adding a new npm package you will need to stop your local docker environment with ctrl + c and then run the above alias `produce_down`. The -v flag in that alias will clear out your local volumes and then when you rebuild the new npm package will be available.
 - stop server
 - produce_down
@@ -50,7 +50,7 @@ You may want to see running docker containers or cleanup volume storage from tim
   * this makes it easy to always know what you branched off of and what PR is to be merged into what branch
   * In the event that you need to add something to a feature branch after it has been merged simply create a new branch instead of trying to resurrect the merged branch
 ```
-- master
+- main
   - staging
   - feature-name
     - feature-name--subfeature-name
