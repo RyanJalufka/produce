@@ -76,9 +76,7 @@ Infrastructure
 * MongoDB
 * Docker without DockerHub
 
-------------------------------------
 ## Code Style Guide and More
 Please read the following readme files for more info on our app
 * [client/README.md]()
 * [api/README.md]()
-------------------------------------
