@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useLocation, Navigate } from 'react-router-dom';
+import {useLocation, Navigate} from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
   const [authorized] = useState(false); //TODO: change this to hooks
