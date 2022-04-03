@@ -1,25 +1,19 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Button from '@mui/material/Button';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import PrivateRoute from "./components/auth/PrivateRoute";
+import Dashboard from  "./pages/Dashboard"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>potato turtle soup</p>
-        <Button variant="contained">
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </Button>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="login" element={<Login />} />
+        <Route path="dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
