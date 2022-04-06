@@ -14,7 +14,7 @@ services:
   api:
     build: ./api
     environment:
-      - MONGODB_URL=mongodb://mongodb:27017/node-boilerplate
+      - MONGODB_URL=mongodb://mongodb:27017/
       - NODE_ENV=development
     ports:
       - '8000:8000'
@@ -26,16 +26,16 @@ services:
       - node-network
 
   mongodb:
-    image: mongo:4.2.1-bionic
+    image: mongo
     ports:
       - '27017:27017'
-    volumes:
-      - dbdata:/data/db
+    # volumes:
+    #   - dbdata:/data/db
     networks:
       - node-network
 
-volumes:
-  dbdata:
+# volumes:
+#   dbdata:
 
 networks:
   node-network:
