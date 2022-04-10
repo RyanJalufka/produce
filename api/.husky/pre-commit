@@ -1,14 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-cd client
-
-# build react app
-npm run build
-
-
-# Copy dist folder to api server
-rsync -a dist/ ../api/src/dist
-
-# delete dist folder from client
-rm -rf dist
+exit 1

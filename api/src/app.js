@@ -52,12 +52,12 @@ if (config.env === 'production') {
   // limit repeated failed requests to auth endpoints
   app.use('/v1/auth', authLimiter);
 
-  // serve react files from express
-  app.use(express.static(path.join(__dirname, 'dist')));
+  // // serve react files from express
+  // app.use(express.static(path.join(__dirname, 'dist')));
 
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-  });
+  // app.get('/', (req, res) => {
+  //   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  // });
 }
 
 // v1 api routes

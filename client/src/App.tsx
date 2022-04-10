@@ -11,7 +11,7 @@ function App() {
       const response = await axios.get('/api/users')
       console.log('response: ', response.data)
     } catch (err) {
-      console.log(err instanceof Error ? err.message)
+      console.log(err instanceof Error && err.message)
     }
   }
 

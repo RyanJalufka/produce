@@ -1,12 +1,18 @@
 version: '3'
 
 services:
-#   client:
-#     build: ./client
-#     ports:
-#       - '3000:3000'
-#     volumes:
-#       - ./client:/usr/src/client
+  nginx:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    env_file:
+      - "./environments/.env.production"
+    depends_on:
+      - api
+    restart: always
+    ports:
+      - "3000:80"
+
 
   api:
     build: ./api
@@ -14,14 +20,5 @@ services:
 
     ports:
       - '4001:4001'
-    # depends_on:
-    #   - mongo
     volumes:
       - ./api/src:/usr/src/api/src
-
-  # mongo:
-  #   image: mongo:latest
-  #   ports:
-  #     - "27017:27017"
-  #   volumes:
-  #     - ./mongo-volume:/data/db
