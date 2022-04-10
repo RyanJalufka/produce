@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import logo from './logo.svg'
 import './App.css'
+import logo from './logo.svg'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,17 +23,15 @@ function App() {
             className="App-link"
             href="https://reactjs.org"
             target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
+            rel="noopener noreferrer">
+            Learn React Today!
           </a>
           {' | '}
           <a
             className="App-link"
             href="https://vitejs.dev/guide/features.html"
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             Vite Docs
           </a>
         </p>

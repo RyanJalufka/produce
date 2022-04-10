@@ -3,8 +3,11 @@
 
 cd client
 
+# build react app
 npm run build
 
-mv dist ../api/src
+# Copy dist folder to api server
 rsync -a dist ../api/src/dist
+
+# delete dist folder from client
 rm -rf dist
