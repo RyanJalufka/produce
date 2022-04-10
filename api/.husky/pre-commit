@@ -1,6 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-cd api
+cd client
 
-npm test
+npm run build
+
+mv dist ../api/src
+rsync -a dist ../api/src/dist
+rm -rf dist
