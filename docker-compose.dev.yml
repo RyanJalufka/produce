@@ -8,35 +8,22 @@ services:
     volumes:
       - ./client:/app
       - ./client:/node_modules
-    networks:
-      - node-network
 
   api:
     build: ./api
     environment:
-      - MONGODB_URL=mongodb://mongodb:27017/
+      - MONGODB_URL=mongodb://mongo:27017/produce-db
       - NODE_ENV=development
     ports:
-      - '8000:8000'
+      - '4001:4001'
     depends_on:
-      - mongodb
+      - mongo
     volumes:
       - ./api/src:/usr/src/api/src
-    networks:
-      - node-network
 
-  mongodb:
-    image: mongo
+  mongo:
+    image: mongo:latest
     ports:
-      - '27017:27017'
-    # volumes:
-    #   - dbdata:/data/db
-    networks:
-      - node-network
-
-# volumes:
-#   dbdata:
-
-networks:
-  node-network:
-    driver: bridge
+      - "27017:27017"
+    volumes:
+      - ./mongo-volume:/data/db
