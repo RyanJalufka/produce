@@ -1,9 +1,19 @@
+import axios from 'axios'
 import { useState } from 'react'
 import './App.css'
 import logo from './logo.svg'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  const makeRequest = async () => {
+    try {
+      const response = await axios.get('/api/users')
+      console.log('response: ', response.data)
+    } catch (err) {
+      console.log(err instanceof Error ? err.message)
+    }
+  }
 
   return (
     <div className="App">
@@ -35,6 +45,7 @@ function App() {
             Vite Docs
           </a>
         </p>
+        <button onClick={() => makeRequest()}>make request</button>
       </header>
     </div>
   )

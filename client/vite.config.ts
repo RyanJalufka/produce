@@ -9,6 +9,15 @@ export default defineConfig(({ command, mode }) => {
   console.log("mode: ", mode, env.VITE_APP_TITLE)
   return {
     // build specific config
+    server: {
+      proxy: {
+        "/api": {
+          target: env.VITE_APP_API_ROOT,
+          changeOrigin: false,
+          rewrite: (path) => path.replace(/^\/api/, ""),
+        }
+      }
+    },
     plugins: [
       react(),
       createHtmlPlugin({
