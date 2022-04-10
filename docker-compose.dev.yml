@@ -11,9 +11,10 @@ services:
 
   api:
     build: ./api
-    environment:
-      - MONGODB_URL=mongodb://mongo:27017/produce-db
-      - NODE_ENV=development
+    env_file: "./environments/.env.local"
+    # environment:
+    #   - MONGODB_URL=mongodb://mongo:27017/produce-db
+    #   - NODE_ENV=development
     ports:
       - '4001:4001'
     depends_on:

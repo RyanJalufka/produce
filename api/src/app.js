@@ -46,6 +46,8 @@ app.options('*', cors());
 app.use(passport.initialize());
 passport.use('jwt', jwtStrategy);
 
+console.log('config.env: ', config.env);
+
 if (config.env === 'production') {
   // limit repeated failed requests to auth endpoints
   app.use('/v1/auth', authLimiter);
@@ -53,7 +55,7 @@ if (config.env === 'production') {
   // serve react files from express
   app.use(express.static(path.join(__dirname, 'dist')));
 
-  app.get('*', (req, res) => {
+  app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
   });
 }

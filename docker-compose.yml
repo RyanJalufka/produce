@@ -7,23 +7,17 @@ services:
       - '3000:3000'
     volumes:
       - ./client:/usr/src/client
-    networks:
-      - node-network
 
   api:
     build: ./api
-    environment:
-      - MONGODB_URL=mongodb://mongodb:27017/produce-db
-      - NODE_ENV=production
+    env_file: "./environments/.env.production"
+
     ports:
       - '4001:4001'
     depends_on:
       - mongo
     volumes:
-      - ./api/src:/usr/src/node-app
-    networks:
-      - node-network
-
+      - ./api/src:/usr/src/api/src
 
   mongo:
     image: mongo:latest
@@ -31,10 +25,3 @@ services:
       - "27017:27017"
     volumes:
       - ./mongo-volume:/data/db
-
-volumes:
-  dbdata:
-
-networks:
-  node-network:
-    driver: bridge
