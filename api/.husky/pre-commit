@@ -6,6 +6,8 @@ cd client
 # build react app
 npm run build
 
+rm -rf ../api/src/dist
+
 # Copy dist folder to api server
 rsync -a dist ../api/src/dist
 
