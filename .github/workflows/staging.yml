@@ -11,12 +11,17 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+
       - name: Use Node.js 17.x
         uses: actions/setup-node@v1
         with:
           node-version: 17.x
-      - run: npm install
-      - run: npm run build
+
+      - name: Build Web App
+        run: npm install
+        run: npm run build
+        working-directory: ./client
+
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
