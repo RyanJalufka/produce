@@ -14,6 +14,7 @@ services:
     build: ./api
     environment:
       - MONGODB_URL=mongodb://mongodb:27017/produce-db
+      - NODE_ENV=production
     ports:
       - '4001:4001'
     depends_on:
